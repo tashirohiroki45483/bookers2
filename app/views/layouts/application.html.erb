@@ -8,39 +8,59 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://kit.fontawesome.com/75a98ceaff.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <header>
-      <h1>Bookers</h1>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Home", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "Users", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "Books", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Home", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "About", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Sign up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
+      <nav class="navbar navbar-dark bg-dark text-light mb-3">
+        <div class="container">
+        <a class="nav-link active text-light " href="/"><span>Bookers</span></a>
+          <ul class="nav justify-content-end  ">
+          <% if user_signed_in? %>
+            <li class="nav-item ">
+              <a class="nav-link active text-light" href="/">
+              <i class="fas fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="#">
+              <i class="fa-solid fa-users"></i>Users</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/books">
+              <i class="fas fa-books"></i><i class="fas fa-book"></i>Books</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/users/sign_out">
+              <i class="fa-solid fa-right-from-bracket"></i>Log out</a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/">
+              <i class="fas fa-home"></i>Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/home/about">
+              <i class="fa-solid fa-link"></i>About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/users/sign_up">
+              <i class="fa-solid fa-user-plus"></i>Sign up</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-light" href="/users/sign_in">
+              <i class="fa-solid fa-right-to-bracket"></i>Log in</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      </nav>
+    </header>
+    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
     <%= yield %>
+    
+    <footer class="footer ">
+      <div class="mx-auto mt-5" style="width: 180px;">CopyRight Infratop.inc</div>
+    </footer>
   </body>
 </html>

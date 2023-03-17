@@ -1,11 +1,70 @@
-<h1>New book</h1>
-<!-- form_with部分 -->
-<%= form_with model: Book.new do |f| %>
+<div class="container">
+  <div class="row">
+    
+    <div class="col-md-3">
+<h2>User info</h2>
+  <% if @user.image.attached? %>
+    <%= image_tag @user.image, size: "100x100" %>
+  <% else %>
+    <%= image_tag 'default-image', size: "100x100" %>
+  <% end %>
+<table class="table">
+        <thead class="">
+          <tr>
+            <th scope="col">name</th>
+            <th scope="col"><%= @user.name %></th>
+          </tr>
+        </thead>
+      <tbody>
+          <tr>
+            <th scope="row">introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+      </tbody>
+</table>
+
+<a class="" href="/">
+<button type="button" class="btn btn-outline-dark btn-block">
+  <i class="fas fa-user-cog"></i>
+</button>
+</a>
+
+<h2>New book</h2>
+
+<%= form_with model: @book do |f| %>
   <p>Title</p>
-  <%= f.text_field :title %>
-	
+  <%= f.text_field :title, :size=>"25" %>
+
   <p>Opinion</p>
-  <%= f.text_area :body %>
-	
-  <div><%= f.submit 'Create Book' %></div>
+  <%= f.text_area :body, :size=>"25x3" %>
+  
+  <button type="button" class="btn btn-success"> <%= f.submit'Create Book' %></button>
+  
 <% end %>
+    </div>
+    <div class="col-md-9">
+      
+      <h2>Books</h2>
+      
+      <table class="table table-hover">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+          </tr>
+        </thead>
+      <tbody>
+        <% @book2.each do |book| %>
+          <tr>
+            <th scope="row"></th>
+            <td><a class="" href="/"><%= book.title %></a></td>
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+      
+    </div>
+  </div>
+</div>

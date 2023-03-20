@@ -28,7 +28,11 @@
               <% end %>
             </th>
             <td><%= user.name %></td>
-            <td><a class="" href="/">Show</a></td>
+            <td>
+              <%= link_to user_path(user.id) do %>
+              Show
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>

@@ -1,4 +1,4 @@
-<!--books_index-->
+<!--books_show-->
 <div class="container">
   <div class="row">
     
@@ -15,24 +15,30 @@
           <tr>
             <th>
               <% if @book2.user.image.attached? %>
-              <%= image_tag @book2.user.get_profile_image(100,100) %>
+              <%= image_tag @book2.user.image, size: "75x75" %>
               <% else %>
               <%= image_tag 'default-image', size: "100x100" %>
               <% end %>
-              <p><%= @book2.user.name %></p>
+              <p><a href="ここまだ">
+                <%= link_to user_path(@book2.user) do%>
+                  <%= @book2.user.name %>
+                <% end %>
+              </p>
             </th>
-            <td><a class="" href="/"><%= @book2.title %></a>
+            <td><a href=""><%= @book2.title %></a>
             <td><%= @book2.body %></td>
             <td>
               <% if @book2.user == current_user %>
-              <a href="#" class="btn btn-success" role="button">Edit</a>
+                <%= link_to edit_book_path(@book2), class: "btn btn-success" do%>
+                Edit
+                <% end %>
               <% end %>
             </td>
             <td>
               <% if @book2.user == current_user %>
-                <button type="button" class="btn btn-danger">
-                  <%= link_to "Destroy", book_path(@book2), method: :delete %>
-                </button>
+                <%= link_to book_path(@book2), class: "btn btn-danger", method: :delete do%>
+                Destroy
+                <% end %>
               <% end %>
             </td>
           </tr>

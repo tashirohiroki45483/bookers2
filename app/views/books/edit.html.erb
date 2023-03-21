@@ -1,8 +1,20 @@
 <!--books_edit-->
 <div class="container">
+
   <div class="row">
     <div class="col-lg-6 mx-auto">
+
       <h1>Editing Book</h1>
+
+      <% if @book.errors.any?%>
+      <%= @book.errors.count%>errors prohibited this obj from being saved:
+      <ul>
+      <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+
       <%= form_with model: @book do |f| %>
       <p class="mb-1">Title</p>
       <%= f.text_field :title, :size=>"50" %>
@@ -19,7 +31,7 @@
       <%= link_to books_path do%>
       Back
       <% end %>
-      
+
     </div>
   </div>
 </div>

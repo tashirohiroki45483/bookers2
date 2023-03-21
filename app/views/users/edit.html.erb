@@ -3,6 +3,16 @@
   <div class="row">
     <div class="col-lg-6 mx-auto">
       <h1>User info</h1>
+      
+      <% if @user.errors.any?%>
+      <%= @user.errors.count%>errors prohibited this obj from being saved:
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      <% end %>
+      
       <%= form_with model: @user do |f| %>
       <p class="mb-1">Name</p>
       <%= f.text_field :name, :size=>"50" %>

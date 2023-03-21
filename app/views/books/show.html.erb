@@ -1,4 +1,5 @@
 <!--books_show-->
+<%= flash[:success] %>
 <div class="container">
   <div class="row">
     
@@ -19,7 +20,7 @@
               <% else %>
               <%= image_tag 'default-image', size: "100x100" %>
               <% end %>
-              <p><a href="ここまだ">
+              <p>
                 <%= link_to user_path(@book2.user) do%>
                   <%= @book2.user.name %>
                 <% end %>

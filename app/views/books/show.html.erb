@@ -2,26 +2,26 @@
 <%= flash[:success] %>
 <div class="container">
   <div class="row">
-    
+
     <div class="col-md-3">
 <%= render 'users/user_info', user: @user, book: @book%>
     </div>
-    <div class="col-md-9">
-      
+    <div class="col-md-8 offset-md-1">
+
       <h2>Book detail</h2>
-      
+
       <table class="table">
-        
+
       <tbody>
           <tr>
             <th>
-              <% if @book2.user.image.attached? %>
-              <%= image_tag @book2.user.image, size: "75x75" %>
+              <%= link_to user_path(@book2.user) do%>
+              <% if @book2.user.profile_image.attached? %>
+              <%= image_tag @book2.user.profile_image, size: "75x75" %>
               <% else %>
               <%= image_tag 'default-image', size: "100x100" %>
               <% end %>
               <p>
-                <%= link_to user_path(@book2.user) do%>
                   <%= @book2.user.name %>
                 <% end %>
               </p>
@@ -45,7 +45,7 @@
           </tr>
       </tbody>
       </table>
-      
+
     </div>
   </div>
 </div>

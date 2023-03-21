@@ -6,7 +6,7 @@
     <div class="col-md-3">
 <%= render 'users/user_info', user: @user, book: @book%>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8 offset-md-1">
 
       <h2>Books</h2>
       <table class="table table-hover">
@@ -21,10 +21,12 @@
         <% @books.each do |book| %>
           <tr>
             <th scope="row">
-              <% if @user.image.attached? %>
-              <%= image_tag @user.image, size: "75x75" %>
-              <% else %>
-              <%= image_tag 'default-image', size: "75x75" %>
+              <%= link_to user_path(book.user.id) do%>
+                <% if @user.profile_image.attached? %>
+                <%= image_tag @user.profile_image, size: "75x75" %>
+                <% else %>
+                <%= image_tag 'default-image', size: "75x75" %>
+                <% end %>
               <% end %>
             </th>
             <td>

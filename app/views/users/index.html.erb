@@ -5,7 +5,7 @@
     <div class="col-md-3">
 <%= render 'user_info', user: @user, book: @book%>
     </div>
-    <div class="col-md-9">
+    <div class="col-md-8 offset-md-1">
 
       <h2>Users</h2>
 
@@ -21,8 +21,8 @@
         <% @user2.each do |user| %>
           <tr>
             <th scope="row">
-              <% if user.image.attached? %>
-              <%= image_tag user.image, size: "75x75" %>
+              <% if user.profile_image.attached? %>
+              <%= image_tag user.profile_image, size: "75x75" %>
               <% else %>
               <%= image_tag 'default-image', size: "75x75" %>
               <% end %>
